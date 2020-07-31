@@ -1,0 +1,30 @@
+{
+  "name": "garden",
+  "version": "1.0.0",
+  "description": "Nha vuon Van Phuc",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanhuy2110/VPgarden.git"
+  },
+  "keywords": [
+    "garden",
+    "nodejs"
+  ],
+  "author": "liku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanhuy2110/VPgarden/issues"
+  },
+  "homepage": "https://github.com/tanhuy2110/VPgarden#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

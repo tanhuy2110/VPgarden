@@ -1,10 +1,14 @@
 const express = require('express');
+const mysql = require('mysql');
 const path = require('path');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 
 const app = express();
 const port = 3000;
+
+// Call Route Init
+const route = require('./routes/index');
 
 // Set url default
 app.use(express.static(path.join(__dirname, 'public')));
@@ -19,8 +23,25 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource/views'));
 
+// Connect Mysql
+// var mysqlConnection = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "blog",
+//     multipleStatements: true
+// })
 
-app.get('/', (req, res) => res.render('home'));
-app.get('/news', (req, res) => res.render('news'));
+// mysqlConnection.connect((err) => {
+//     if(!err) {
+//         console.log('Connected!');
+//     } else {
+//         console.log('Connection failed');
+//     }
+// })
+
+// Route init
+route(app);
+
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));

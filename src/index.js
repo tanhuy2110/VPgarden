@@ -7,8 +7,9 @@ const handlebars = require('express-handlebars');
 const app = express();
 const port = 3000;
 
-// Call Route Init
+// Call route, DB
 const route = require('./routes/index');
+const db = require('./config/db');
 
 // Set url default
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,9 +22,12 @@ app.engine('hbs', handlebars({
     extname: '.hbs'
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resource/views'));
+app.set('views', path.join(__dirname, 'resource', 'views'));
 
-// Connect Mysql
+// Connect to MoggoDB
+db.connect();
+
+// Connect to Mysql
 // var mysqlConnection = mysql.createConnection({
 //     host: "localhost",
 //     user: "root",
@@ -44,4 +48,4 @@ app.set('views', path.join(__dirname, 'resource/views'));
 route(app);
 
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`App listening at http://localhost:${port}`));

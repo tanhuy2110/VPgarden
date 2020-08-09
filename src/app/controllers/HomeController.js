@@ -1,15 +1,16 @@
 const Home = require('../models/Home');
 const { render } = require('node-sass');
 const { mutipleMongooseToObj } = require('../../util/mongoose');
+const { ArrChunk } = require('../../util/array');
 
 class HomeController {
     
     // [GET] 
     index(req, res, next) {
-        Home.find({})
+        Home.find({}).lean()
             .then(items => {
                 res.render('home', { 
-                    items: mutipleMongooseToObj(items)
+                    items: ArrChunk(items, 2),
                 })
             })
             .catch(next)
